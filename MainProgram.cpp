@@ -149,7 +149,7 @@ IntArray::~IntArray() {
 // Copy Constructor
 IntArray::IntArray(const IntArray& other) {
     capacity = other.capacity;
-    count = 0;
+    count = other.count;
     data = new int[capacity];
     
     for (int i = 0; i < count; i++){
@@ -168,7 +168,7 @@ IntArray& IntArray::operator=(const IntArray& other) {
     if (this != &other){
         delete[] data;
         capacity = other.capacity;
-        count = 0;
+        count = other.count;
         data = new int[capacity];
         for (int i = 0; i < count; i++){
             data[i] = other.data[i];
@@ -202,7 +202,7 @@ bool IntArray::add(int value) {
 int IntArray::get(int index) const {
     // TODO 11: If index is valid (0 <= index < count), return data[index].
     //          Otherwise return -1.
-    if(0 <= index < count){
+    if(0 <= index && index < count){
         return data[index];
     }
     return -1;
